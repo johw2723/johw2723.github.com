@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.cal.mappers.calMapper">
+
+ <!-- 기록 -->
+ <insert id="insert">
+  insert into myCal(calNum, op1, op, op2, result) values (myCal_seq.nextval, #{op1}, #{op}, #{op2}, #{result})
+ </insert>
+ 
+ <!-- 조회 -->
+ <select id="read" resultType="com.cal.domain.CalVO">
+  select calNum, op1, op, op2, result from myCal where calNum = #{calNum}
+ </select>
+
+ <!-- 수정 --> 
+ <update id="update">
+  update myCal set op1 = #{op1}, op = #{op}, op2 = #{op2}, result = #{result} where calNum = #{calNum}
+ </update>
+ 
+ <!-- 삭제 -->
+ <delete id="delete">
+  delete from myCal where calNum = #{calNum}
+ </delete>
+ 
+</mapper>
